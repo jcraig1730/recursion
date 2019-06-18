@@ -32,11 +32,13 @@ var stringifyJSON = function(obj) {
       string += "]";
     }
 
-    // if element is an object 
+    // if element is an object add opening bracket and get the keys
     if (element.constructor === {}.constructor){
       string += "{";
       var keys = Object.keys(element);
       for (var i = 0; i < keys.length; i++){
+        // loop through each key-value pair adding the key as a string and calling stringify on each value
+        // if the value is either a function or undefined continue to the next pair adding nothing to the string
         if (typeof element[keys[i]] === 'function' || typeof element[keys[i]] === 'undefined'){
           continue;
         } else{
